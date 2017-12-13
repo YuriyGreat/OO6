@@ -1,0 +1,44 @@
+<div data-ride="carousel">
+    <ol>
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div role="listbox">
+        <div >
+            <img src="http://333v.ru/uploads/7f/7fa764e75dec49d290390ff5186cdc9f.jpg" alt="First slide">
+            <div >
+                <div >
+                    <h1>{{ details[0].getName }}</h1>
+                    <p><a href="{{ path('detailsPage', {'page': details[0].getId}) }}" role="button">Read</a></p>
+                </div>
+            </div>
+        </div>
+        <div >
+            <img src="https://img3.goodfon.ru/original/2048x1152/7/6b/italiya-gardena-alpy-gory.jpg" alt="Second slide">
+            <div >
+                <div >
+                    <h1>{{ details[1].getName }}</h1>
+                    <p><a href="{{ path('detailsPage', {'page': details[1].getId}) }}" role="button">Read</a></p>
+                </div>
+            </div>
+        </div>
+        <div >
+            <img src="https://club.foto.ru/gallery/images/photo/2016/06/22/2466686.jpg" alt="Third slide">
+            <div >
+                <div >
+                    <h1>{{ details[2].getName }}</h1>
+                    <p><a href="{{ path('detailsPage', {'page': details[2].getId}) }}" role="button">Read</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#myCarousel" role="button" data-slide="prev">
+        <span aria-hidden="true"></span>
+        <span >Previous</span>
+    </a>
+    <a href="#myCarousel" role="button" data-slide="next">
+        <span  aria-hidden="true"></span>
+        <span >Next</span>
+    </a>
+</div>

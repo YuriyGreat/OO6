@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Shop account
+{% endblock %}
+
+{% block body %}
+{% if is_granted('ROLE_USER') %}
+
+        <li><a href="{{ path('orders', {'email':user.getEmail}) }}">orders</a></li>
+        <li><a href="{{ path('favorites', {'email':user.getEmail}) }}">favorites</a></li>
+
+{% endif %}
+{% endblock %}

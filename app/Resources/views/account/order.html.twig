@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    orders
+{% endblock %}
+
+{% block body %}
+
+
+        <h1>{{ user.getUsername() }} orders</h1>
+
+        {% for item in items %}
+           <hr>
+            <h5><a href="{{ path('ItemPage', {'page':item.getItemId().getId()}) }}">{{ item.getItemId().getName() }}</a></h5>
+            <p>{{ item.getItemId().getManufacturer() }}</p>
+            <p>{{ item.getItemId().getPrice() }}$</p>
+           <hr>
+        {% endfor %}
+
+{% endblock %}

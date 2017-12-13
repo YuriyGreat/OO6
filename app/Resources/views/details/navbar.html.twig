@@ -1,0 +1,84 @@
+<nav>
+    <div >
+        <div>
+            <a>Shop</a>
+        </div>
+
+        <div id="navbar" >
+            <ul >
+                <li><a href="{{ path('details') }}">Details</a></li>
+
+                {% if is_granted('ROLE_MANAGER') %}
+                    <li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Add
+                            <span ></span>
+                        </a>
+                        <ul >
+                            <li><a href="{{ path('addDetail') }}">Detail</a></li>
+                            <li><a href="{{ path('addCategory') }}">Category</a></li>
+                        </ul>
+                    </li>
+
+                    {% if edit is defined %}
+                        <li><a href="{{ path('editArticle', {'page': article.getId}) }}">Edit</a></li>
+                        <li><a href="" data-toggle="modal" data-target="#deleteModal">Delete</a></li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+
+
+            <ul>
+                <li >
+                    <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        {{ user.getEmail }}
+                        <span ></span>
+                    </a>
+                    <ul >
+                        <li><a href="{{ path('logout') }}">Log out</a></li>
+                        <li><a href="{{ path('account', {'email':user.getEmail}) }}">Account</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            {% if is_granted('ROLE_ADMIN') %}
+                <ul >
+                    <li><a href="#">Users</a></li>
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+{% if edit is defined %}
+    {% if is_granted('ROLE_ADMIN') %}
+    <div>
+        <div >
+            <div>
+
+                <div >
+                    Are you sure you want to delete the item? Undo will not be possible.
+                </div>
+                <div>
+                    <button type="button" data-dismiss="modal">Cancel</button>
+                    <a href="{{ path('delete', {'page': detail.getId}) }}">
+                        <button type="button">Delete</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% if is_granted('ROLE_USER') %}
+        <div>
+            <a href="{{ path('addToOrder', {'page': detail.getId}) }}">
+                <button type="button">to order</button>
+            </a>
+        </div>
+        <div>
+            <a href="{{ path('addToFavorites', {'page': detail.getId}) }}">
+                <button type="button">to favorites</button>
+            </a>
+        </div>
+    {% endif %}
+{% endif %}

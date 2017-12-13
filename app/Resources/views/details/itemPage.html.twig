@@ -1,0 +1,30 @@
+{% extends 'details/itemsBase.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/detailsPage.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1>
+        {{ detail.getName }}
+        <small><span >{{ detail.getAvailable }}</span></small>
+    </h1>
+    <div >
+        <div >
+
+        </div>
+        <div >
+            <p>{{ detail.getPrice }}</p>
+        </div>
+        <div>
+            <p>{{ detail.category.name }}</p>
+        </div>
+    </div>
+    <div>
+        <img src="{{ detail.getImage }}" alt="Image">
+
+    </div>
+
+
+{% endblock %}

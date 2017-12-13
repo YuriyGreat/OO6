@@ -1,0 +1,39 @@
+{% extends 'details/itemsBase.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/articles.css') }}">
+{% endblock %}
+
+{% block content %}
+    {% if details|length >= 3 %}
+        {{ include('details/carousel.html.twig', { 'details': details }) }}
+    {% endif %}
+
+    {% for detail in details %}
+        <hr>
+        <div>
+            <a href="{{ path('ItemPage', {'page': detail.getId}) }}">
+                <div >
+                    <h2 >
+                        {{ detail.getName }}
+                        <small><span >{{ detail.getIsNew }}</span></small>
+                    </h2>
+                    <div >
+                        <div >
+                            <p>{{ detail.getAvailable }}</p>
+                        </div>
+                        <div >
+                            <p>{{ detail.getPrice }}</p>
+                        </div>
+                    </div>
+                    <p >{{ detail.getManufacturer }}</p>
+                </div>
+                <div >
+                    <img src="{{ detail.getImage }}" alt="Image">
+                </div>
+            </a>
+        </div>
+        <hr >
+    {% endfor %}
+{% endblock %}

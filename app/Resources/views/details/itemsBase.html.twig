@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Shop
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/articlesBase.css') }}">
+{% endblock %}
+
+{% block body %}
+    {{ include('details/navbar.html.twig', { 'user': user }) }}
+
+    <div >
+        <div >
+            <div >
+                <ul >
+                    <li><a href="{{ path(type) }}">ALL</a></li>
+                    {% for category in categories %}
+                        <li>
+                            <a href="{{ path(typeCategory, {'category': category.getName}) }}">
+                                {{ category.getName }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div >
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
